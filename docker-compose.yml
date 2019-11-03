@@ -1,0 +1,68 @@
+version: '3.5'
+services:
+  ambari_server:
+    container_name: ambari_server
+    image: marko/ambari_server
+    hostname: ambari_server
+    build:
+      context: ./ambari_server
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+#    volumes:
+#     - "./ambari_server/conf:/tmp"
+    depends_on:
+      - mariadb_server
+  ambari_agent1:
+    container_name: ambari_agent1
+    image: marko/ambari_agent
+    hostname: ambari_agent1
+    build:
+      context: ./ambari_agent
+      dockerfile: Dockerfile
+#    ports:
+#      - "8080:8080"
+#    volumes:
+#     - "./ambari_server/conf:/tmp"
+    depends_on:
+      - mariadb_server
+      - ambari_server
+  ambari_agent2:
+    container_name: ambari_agent2
+    image: marko/ambari_agent
+    hostname: ambari_agent2
+    build:
+      context: ./ambari_agent
+      dockerfile: Dockerfile
+#    ports:
+#      - "8080:8080"
+#    volumes:
+#     - "./ambari_server/conf:/tmp"
+    depends_on:
+      - mariadb_server
+      - ambari_server
+  ambari_agent3:
+    container_name: ambari_agent3
+    image: marko/ambari_agent
+    hostname: ambari_agent3
+    build:
+      context: ./ambari_agent
+      dockerfile: Dockerfile
+#    ports:
+#      - "8080:8080"
+#    volumes:
+#     - "./ambari_server/conf:/tmp"
+    depends_on:
+      - mariadb_server
+      - ambari_server
+  mariadb_server:
+    container_name: mariadb_server
+    image: mariadb:latest
+    hostname: mariadb_server
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=simple123
+    volumes:
+     - "./mysql/data:/var/lib/mysql"
+     - "./mysql/init:/docker-entrypoint-initdb.d"
