@@ -22,7 +22,7 @@ RUN apt-get update
 
 RUN apt-get install -y ambari-agent
 
-RUN sed -i -e "s/hostname=localhost/hostname=ambari_server/"g /etc/ambari-agent/conf/ambari-agent.ini
+RUN sed -i -e "s/hostname=localhost/hostname=ambariserver/"g /etc/ambari-agent/conf/ambari-agent.ini
 
 # RUN ambari-server setup --jdbc-db=mysql --jdbc-driver=/usr/share/java/mysql-connector-java-8.0.18.jar --enable-lzo-under-gpl-license
 
