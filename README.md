@@ -12,7 +12,7 @@ tldr; this isn't fully working yet.
     - 1 Ambari server `ambariserver`
         - has PostgreSQL server intalled on it with default user/password `ambari`/`bigdata`
     - 3 Ambari agents `ambariagent[1-3]`
-    - 1 MariaDB server `mariadb_server`
+    - 1 MariaDB server `mariadbserver`
         - has users and empty databases to support
             - Ambari 
                 - we're not using it now - we will replace the PostgreSQL server with this in the future
@@ -26,7 +26,7 @@ tldr; this isn't fully working yet.
     - bring up the environment, using `docker compose up -d`
     - wait for ~5 minutes to allow time for the MySQL startup script to create the users and schema
     - Open http://localhost:8080 and run the Ambari wizard to install Apache Kafkaa, Ranger, etc.
-        -  During the install, choose MariaDB/MySQL as the database for Apache Hive, Ranger, etc. Provide `mariadb_server` as the hostname for the existing MySQL cluster.
+        -  During the install, choose MariaDB/MySQL as the database for Apache Hive, Ranger, etc. Provide `mariadbserver` as the hostname for the existing MySQL cluster.
     - Once you are done/stuck, bring down the environment using `docker compose down`
 
 > Note: There is an open bug that prevents Apache Yarn from starting, once the Ambari wizard is done
