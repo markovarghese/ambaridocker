@@ -24,6 +24,8 @@ services:
 #      - "8080:8080"
 #    volumes:
 #     - "./ambariserver/conf:/tmp"
+    cap_add:
+      - ALL
     depends_on:
       - mariadbserver
       - ambariserver
@@ -38,6 +40,8 @@ services:
 #      - "8080:8080"
 #    volumes:
 #     - "./ambariserver/conf:/tmp"
+    cap_add:
+      - ALL
     depends_on:
       - mariadbserver
       - ambariserver
@@ -52,6 +56,8 @@ services:
 #      - "8080:8080"
 #    volumes:
 #     - "./ambariserver/conf:/tmp"
+    cap_add:
+      - ALL
     depends_on:
       - mariadbserver
       - ambariserver
