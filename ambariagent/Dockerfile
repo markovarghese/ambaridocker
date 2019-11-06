@@ -12,7 +12,11 @@ RUN apt update && \
       apt install -y ntp && \
         apt install -y wget && \
             apt install -y gnupg2 && \
-              apt install /tmp/mysql-connector-java_8.0.18-1ubuntu18.04_all.deb
+              apt install /tmp/mysql-connector-java_8.0.18-1ubuntu18.04_all.deb && \
+# to satisfy https://docs.cloudera.com/HDPDocuments/Ambari-2.7.4.0/bk_ambari-installation/content/mmsr_software_reqs.html ...
+                apt install -y openssh-client && \
+                  apt install -y unzip && \
+                    apt install -y build-essential
 
 RUN wget -O /etc/apt/sources.list.d/ambari.list http://public-repo-1.hortonworks.com/ambari/ubuntu18/2.x/updates/2.7.4.0/ambari.list
 

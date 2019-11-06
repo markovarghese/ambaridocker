@@ -12,7 +12,7 @@ services:
 #    volumes:
 #     - "./ambariserver/conf:/tmp"
     depends_on:
-      - mariadb_server
+      - mariadbserver
   ambariagent1:
     container_name: ambariagent1
     image: marko/ambariagent
@@ -24,8 +24,10 @@ services:
 #      - "8080:8080"
 #    volumes:
 #     - "./ambariserver/conf:/tmp"
+    cap_add:
+      - ALL
     depends_on:
-      - mariadb_server
+      - mariadbserver
       - ambariserver
   ambariagent2:
     container_name: ambariagent2
@@ -38,8 +40,10 @@ services:
 #      - "8080:8080"
 #    volumes:
 #     - "./ambariserver/conf:/tmp"
+    cap_add:
+      - ALL
     depends_on:
-      - mariadb_server
+      - mariadbserver
       - ambariserver
   ambariagent3:
     container_name: ambariagent3
@@ -52,13 +56,15 @@ services:
 #      - "8080:8080"
 #    volumes:
 #     - "./ambariserver/conf:/tmp"
+    cap_add:
+      - ALL
     depends_on:
-      - mariadb_server
+      - mariadbserver
       - ambariserver
-  mariadb_server:
-    container_name: mariadb_server
+  mariadbserver:
+    container_name: mariadbserver
     image: mariadb:latest
-    hostname: mariadb_server
+    hostname: mariadbserver
     ports:
       - "3306:3306"
     environment:
