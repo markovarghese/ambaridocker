@@ -1,6 +1,6 @@
 # ambaridocker
 
-tldr; this isn't fully working yet.
+tldr; this isn't fully working yet on a low-powered mac; but it works on my workstation with 64 GB ram.
 
 ## Northstar
 - Run Ambari cluster on Docker, so that Apache Atlas, Apache Ranger etc can be tested locally easily. 
